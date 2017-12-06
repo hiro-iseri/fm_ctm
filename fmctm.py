@@ -1,5 +1,3 @@
-
-
 # coding: utf-8
 """Simple classification tree tool using FreeMind and PICT"""
 
@@ -8,8 +6,9 @@ import subprocess
 import argparse
 import sys
 
+
 class FMCTMGenerator(object):
-    """generate test condition from FreeMind's file"""
+    """generates test condition from FreeMind's file"""
 
     def __init__(self):
         self._clsf_dict = {}
@@ -46,8 +45,8 @@ class FMCTMGenerator(object):
             raise
         subprocess.Popen("pict temp.csv", shell=True)
 
-    def run(self, input_file):
-        """generate test condition from FreeMind's file"""
+    def generate(self, input_file):
+        """generates test condition from FreeMind's file"""
         try:
             cls_tree = ET.parse(input_file)
         except ET.ParseError:
@@ -66,7 +65,7 @@ def _get_parser():
 def main():
     parser = _get_parser()
     gen = FMCTMGenerator()
-    gen.run(parser.parse_args().freemind_file)
+    gen.generate(parser.parse_args().freemind_file)
 
 if __name__ == '__main__':
     main()
